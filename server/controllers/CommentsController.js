@@ -6,7 +6,7 @@ import auth0Provider from "@bcwdev/auth0provider";
 
 
 
-export class CommentController extends BaseController {
+export class CommentsController extends BaseController {
   constructor() {
     super("api/comments");
     this.router = express
