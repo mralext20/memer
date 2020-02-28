@@ -4,8 +4,8 @@ import Comment from "../models/Comment";
 const _repository = mongoose.model("Comment", Comment);
 
 class CommentsService {
-  async getAll() {
-    return await _repository.find({});
+  async getAll(query = {}) {
+    return await _repository.find(query);
   }
 
   async findById(id) {
