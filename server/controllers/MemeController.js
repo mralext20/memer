@@ -48,10 +48,10 @@ export class MemeController extends BaseController {
 
   async create(req, res, next) {
     try {
-      let data = await MemesService.create(req.body);
       // NOTE NEVER TRUST THE CLIENT TO ADD THE CREATOR ID
       req.body.creator = req.user.email;
-      res.send(req.body);
+      let data = await MemesService.create(req.body);
+      res.send(data);
     } catch (error) {
       next(error);
     }
