@@ -3,14 +3,14 @@ import { BadRequest } from "../utils/Errors";
 import Meme from "../models/Meme"
 
 class MemeService {
-  async findAll(query = {}) {
+  async getAll(query = {}) {
     let values = await dbContext.Values.find(query).populate(
       "creator",
       "name picture"
     );
     return values;
   }
-  async findById(id) {
+  async getById(id) {
     let value = await dbContext.Values.findById(id);
     if (!value) {
       throw new BadRequest("Invalid Id");
