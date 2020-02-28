@@ -67,7 +67,7 @@ export class MemeController extends BaseController {
   }
   async delete(req, res, next) {
     try {
-      await MemeService.delete(req.params.id);
+      await MemeService.delete(req.params.id, req.userInfo.email);
       res.send("Deleted");
     } catch (error) {
       next(error);

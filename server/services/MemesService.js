@@ -33,7 +33,7 @@ class MemeService {
 
   async delete(id, email) {
     let meme = await dbContext.Memes.findById(id);
-    if (meme.creator.email != email) {
+    if (meme.creatorEmail != email) {
       throw new UnAuthorized()
     }
     await dbContext.Memes.findByIdAndDelete(meme.id)
