@@ -1,6 +1,6 @@
 import express from "express";
 import BaseController from "../utils/BaseController";
-import CommentService from "../services/CommentServices";
+import CommentService from "../services/CommentsService";
 import auth0Provider from "@bcwdev/auth0provider";
 
 
@@ -8,7 +8,7 @@ import auth0Provider from "@bcwdev/auth0provider";
 
 export class CommentController extends BaseController {
   constructor() {
-    super("api/values");
+    super("api/comments");
     this.router = express
       .Router()
       .get("", this.getAll)
@@ -29,7 +29,7 @@ export class CommentController extends BaseController {
   }
   async getById(req, res, next) {
     try {
-      let data = await CommentService.getById(req.params.id);
+      let data = await CommentService.findById(req.params.id);
       res.send(data);
     } catch (error) {
       next(error);
@@ -55,7 +55,7 @@ export class CommentController extends BaseController {
   }
   async delete(req, res, next) {
     try {
-      await CommentService.delete(req.params.id);
+      await CommentService.deleteCommentById(req.params.id);
       res.send("Deleted");
     } catch (error) {
       next(error);

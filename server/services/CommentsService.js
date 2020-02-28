@@ -16,7 +16,11 @@ class CommentsService {
     return await _repository.create(body);
   }
 
-  async findCommentByMemeId(id) {
+  async update(id, update) {
+    return await _repository.findByIdAndUpdate(id, update, { new: true })
+  }
+
+  async findCommentsByMemeId(id) {
     return await _repository.find({ meme: id })
   }
 
