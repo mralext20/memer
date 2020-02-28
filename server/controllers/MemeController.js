@@ -1,6 +1,6 @@
 import express from "express";
 import BaseController from "../utils/BaseController";
-import MemeService from "../services/MemeServices";
+import MemeService from "../services/MemesService";
 import auth0Provider from "@bcwdev/auth0provider";
 
 
@@ -49,6 +49,23 @@ export class MemeController extends BaseController {
       // NOTE NEVER TRUST THE CLIENT TO ADD THE CREATOR ID
       req.body.creator = req.user.email;
       res.send(req.body);
+    } catch (error) {
+      next(error);
+    }
+  }
+
+  async edit(req, res, next) {
+    try {
+      let data = await MemeService.update(req.paras.id, req.body);
+      res.send(data);
+    } catch (error) {
+      next(error);
+    }
+  }
+  async delete(req, res, next) {
+    try {
+      await MemeService.delete(req.params.id);
+      res.send("Deleted");
     } catch (error) {
       next(error);
     }
