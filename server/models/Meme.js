@@ -1,7 +1,7 @@
 import mongoose from "mongoose";
 const Schema = mongoose.Schema;
 
-const Value = new Schema(
+const Meme = new Schema(
   {
     title: { type: String, required: true },
     memeUrl: { type: String, required: true },
@@ -12,11 +12,11 @@ const Value = new Schema(
   { timestamps: true, toJSON: { virtuals: true } }
 );
 
-Value.virtual("creator", {
+Meme.virtual("creator", {
   localField: "creatorEmail",
   ref: "Profile",
   foreignField: "email",
   justOne: true
 });
 
-export default Value;
+export default Meme;
