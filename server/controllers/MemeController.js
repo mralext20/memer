@@ -15,7 +15,7 @@ export class MemeController extends BaseController {
       .get("", this.getAll)
       // NOTE: Beyond this point all routes require Authorization tokens (the user must be logged in)
       .get("/:id", this.getById)
-      .get("/:id", this.getMemeById)
+      .get("/:id/comments", this.getCommentsByMemeId)
       .use(auth0Provider.getAuthorizedUserInfo)
       .post("", this.create)
       .put("/:id", this.edit)
@@ -37,7 +37,7 @@ export class MemeController extends BaseController {
       next(error);
     }
   }
-  async getMemeById(req, res, next) {
+  async getCommentsByMemeId(req, res, next) {
     try {
       let data = await CommentService.findCommentsByMemeId(req.params.id);
       res.send(data);
