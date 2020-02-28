@@ -1,7 +1,6 @@
 <template>
   <div id="app">
     <navbar />
-    <router-view />
     <div class="container-fluid">
       <div class="text-center text-success">
         <h1>Memer</h1>
@@ -14,6 +13,7 @@
         <createPost :toggleForm="this.toggleForm" v-if="formToggle == true" />
       </div>
     </div>
+    <router-view />
   </div>
 </template>
 

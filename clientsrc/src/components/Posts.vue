@@ -1,6 +1,6 @@
 <template>
   <div class="row">
-    <Post v-for="(postObj) in posts" :key="postObj._id" :postObj="postObj" />
+    <Post v-for="(postObj) in posts" :key="postObj._id" :postData="postObj" />
   </div>
 </template>
 
@@ -10,11 +10,12 @@ import Post from "./Post";
 export default {
   name: "Posts",
   mounted() {
+    console.log("helo");
     this.$store.dispatch("getPosts");
   },
   computed: {
     posts() {
-      let data = this.$store.state.posts;
+      return this.$store.state.posts;
     }
   },
   components: {

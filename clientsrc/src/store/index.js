@@ -48,7 +48,7 @@ export default new Vuex.Store({
         let res = await api.get("/memes");
         commit("setPosts", res.data);
       } catch (error) {
-
+        console.error(error)
       }
     }
   }
