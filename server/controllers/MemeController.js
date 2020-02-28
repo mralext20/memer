@@ -8,7 +8,7 @@ import CommentService from "../services/CommentsService"
 
 export class MemeController extends BaseController {
   constructor() {
-    super("api/values");
+    super("api/memes");
     this.router = express
       .Router()
       .get("", this.getAll)
