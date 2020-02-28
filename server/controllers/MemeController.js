@@ -1,6 +1,6 @@
 import express from "express";
 import BaseController from "../utils/BaseController";
-import MemeService from "../services/MemeServices";
+import MemeService from "../services/MemesService";
 import auth0Provider from "@bcwdev/auth0provider";
 import CommentService from "../controllers/CommentService"
 
