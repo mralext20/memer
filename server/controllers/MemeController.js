@@ -3,6 +3,7 @@ import BaseController from "../utils/BaseController";
 import MemeService from "../services/MemesService";
 import auth0Provider from "@bcwdev/auth0provider";
 import CommentService from "../services/CommentsService"
+import MemesService from "../services/MemesService";
 
 
 
@@ -47,6 +48,7 @@ export class MemeController extends BaseController {
 
   async create(req, res, next) {
     try {
+      let data = await MemesService.create(req.body);
       // NOTE NEVER TRUST THE CLIENT TO ADD THE CREATOR ID
       req.body.creator = req.user.email;
       res.send(req.body);
