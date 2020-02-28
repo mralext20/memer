@@ -28,6 +28,14 @@ class MemeService {
     await meme.save()
     return meme;
   }
+
+  async delete(id, email) {
+    let meme = await dbContext.Memes.findById(id);
+    if (meme.creator.email != email) {
+      throw new UnAuthorized()
+    }
+    await dbContext.Memes.findByIdAndDelete(meme.id)
+  }
 }
 
 export default new MemeService();
