@@ -1,12 +1,16 @@
 <template>
-  <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png" />
-    <h1>Welcome to Your Vue.js App</h1>
+  <div class="home text-center">
+    <Posts />
   </div>
 </template>
 
 <script>
+import Posts from "../components/Posts";
+
 export default {
-  name: "home"
+  name: "home",
+  components: {
+    Posts
+  }
 };
 </script>

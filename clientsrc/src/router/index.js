@@ -19,7 +19,7 @@ const routes = [
     name: "Profile",
     component: Profile,
     beforeEnter: authGuard
-  }
+  },
 ];
 
 const router = new VueRouter({
