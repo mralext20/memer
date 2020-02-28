@@ -16,6 +16,9 @@ class MemeService {
     }
     return value;
   }
+  async create(body) {
+    return await dbContext.Memes.create(body)
+  }
   async update(id, update, email) {
     let meme = await dbContext.Memes.findById(id);
     if (meme.creator != email) {
