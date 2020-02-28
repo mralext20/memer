@@ -11,7 +11,7 @@
         </div>
       </div>
       <div class="row justify-content-center">
-        <createPost v-if="formToggle == true" />
+        <createPost :toggleForm="this.toggleForm" v-if="formToggle == true" />
       </div>
     </div>
   </div>

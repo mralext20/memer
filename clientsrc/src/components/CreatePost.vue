@@ -16,7 +16,8 @@
 
 <script>
 export default {
-  name: "CreatePost"
+  name: "CreatePost",
+  props: ["toggleForm"]
 };
 </script>
 
