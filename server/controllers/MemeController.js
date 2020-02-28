@@ -12,12 +12,24 @@ export class MemeController extends BaseController {
       .Router()
       .get("", this.getAll)
       // NOTE: Beyond this point all routes require Authorization tokens (the user must be logged in)
+      .get("/:id", this.getById)
       .use(auth0Provider.getAuthorizedUserInfo)
-      .post("", this.create);
+      .post("", this.create)
+      .put("/:id", this.edit)
+      .delete("/:id", this.delete);
   }
   async getAll(req, res, next) {
     try {
-      return res.send(["value1", "value2"]);
+      let data = await MemeService.getAll();
+      return res.send(data);
+    } catch (error) {
+      next(error);
+    }
+  }
+  async getById(req, res, next) {
+    try {
+      let data = - await MemeService.findById(req.params.id);
+      res.send(data);
     } catch (error) {
       next(error);
     }
