@@ -1,18 +1,20 @@
 <template>
   <div class="card col-12 col-md-3" style="width: 18rem;">
-    <img src="https://picsum.photos/200" class="card-img-top" alt="..." />
+    <h5 class="card-title">{{postData.title}}</h5>
+    <img :src="postData.imgUrl" class="card-img-top" alt="..." />
     <div class="card-body">
-      <h5 class="card-title">Card title</h5>
-      <p
-        class="card-text"
-      >Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-      <a href="#" class="btn btn-primary">Go somewhere</a>
+      <button class="btn btn-danger">Delete</button>
+      <button class="btn btn-warning">Edit</button>
     </div>
   </div>
 </template>
 
 <script>
-export default {};
+export default {
+  name: "Post",
+  props: ["postData"],
+  methods: {}
+};
 </script>
 
 <style>
