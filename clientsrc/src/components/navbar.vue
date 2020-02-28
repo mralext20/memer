@@ -1,6 +1,6 @@
 <template>
-  <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <router-link class="navbar-brand" :to="{ name: 'Home' }">Memer</router-link>
+  <nav class="navbar navbar-expand-lg navbar-light bg-black">
+    <router-link class="navbar-brand" :to="{ name: 'Home' }"></router-link>
     <button
       class="navbar-toggler"
       type="button"
