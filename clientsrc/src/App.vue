@@ -2,6 +2,11 @@
   <div id="app">
     <navbar />
     <router-view />
+
+    <div class="text-center text-success">
+      <h1>Memer</h1>
+      <i class="far fa-plus-square"></i>
+    </div>
   </div>
 </template>
 
@@ -23,4 +28,13 @@ export default {
 };
 </script>
 
-<style></style>
+<style>
+i {
+  font-size: 2rem;
+  color: rgb(10, 119, 10);
+}
+
+body {
+  background-color: rgb(56, 55, 55);
+}
+</style>
