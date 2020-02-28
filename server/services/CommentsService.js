@@ -21,7 +21,7 @@ class CommentsService {
   }
 
   async findCommentsByMemeId(id) {
-    return await _repository.find({ meme: id })
+    return await _repository.find({ memeId: id })
   }
 
   async deleteCommentById(id) {
