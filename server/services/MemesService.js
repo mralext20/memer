@@ -21,7 +21,7 @@ class MemeService {
   }
   async update(id, update, email) {
     let meme = await dbContext.Memes.findById(id);
-    if (meme.creator != email) {
+    if (meme.creatorEmail != email) {
       throw new UnAuthorized()
     }
     meme.title = update.title || meme.title;
