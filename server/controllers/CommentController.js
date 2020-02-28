@@ -5,6 +5,7 @@ import auth0Provider from "@bcwdev/auth0provider";
 
 
 
+
 export class CommentController extends BaseController {
   constructor() {
     super("api/values");
