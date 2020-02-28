@@ -39,7 +39,7 @@ export class CommentController extends BaseController {
     try {
 
       // NOTE NEVER TRUST THE CLIENT TO ADD THE CREATOR ID
-      req.body.creator = req.userInfo.email;
+      req.body.creatorEmail = req.userInfo.email;
       let data = await CommentService.create(req.body);
       res.send(data);
     } catch (error) {
