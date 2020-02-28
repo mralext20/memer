@@ -3,8 +3,6 @@
     <h5 class="card-title">{{postData.title}}</h5>
     <img :src="postData.memeUrl" class="card-img-top" alt="..." />
     <div class="card-body">
-      <button class="btn btn-danger">Delete</button>
-      <button class="btn btn-warning">Edit</button>
     </div>
   </div>
 </template>
