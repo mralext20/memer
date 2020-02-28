@@ -3,6 +3,8 @@
     <h5 class="card-title">{{postData.title}}</h5>
     <img :src="postData.memeUrl" class="card-img-top" alt="..." />
     <div class="card-body">
+      <i class="fas fa-sort-up"></i>
+      <i class="fas fa-sort-down"></i>
     </div>
   </div>
 </template>
