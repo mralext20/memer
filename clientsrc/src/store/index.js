@@ -26,6 +26,9 @@ export default new Vuex.Store({
     },
     setPosts(state, posts) {
       state.posts = posts;
+    },
+    addPost(state, data) {
+      state.posts.push(data)
     }
   },
   actions: {
@@ -47,6 +50,14 @@ export default new Vuex.Store({
       try {
         let res = await api.get("/memes");
         commit("setPosts", res.data);
+      } catch (error) {
+        console.error(error)
+      }
+    },
+    async addMeme({ commit }, data) {
+      try {
+        let res = await api.post("memes", data);
+        commit("addPost", res.data)
       } catch (error) {
         console.error(error)
       }
