@@ -26,6 +26,9 @@ export default new Vuex.Store({
     },
     setPosts(state, posts) {
       state.posts = posts;
+    },
+    removePost(state, postId) {
+      state.posts = state.posts.filter(p => p._id != postId)
     }
   },
   actions: {
@@ -47,6 +50,14 @@ export default new Vuex.Store({
       try {
         let res = await api.get("");
         commit("setPosts", res.data.data);
+      } catch (error) {
+
+      }
+    },
+    async deletePost({ commit, dispatch }, postId) {
+      try {
+        let res = await api.delete(postId)
+        commit("removePost", postId)
       } catch (error) {
 
       }
