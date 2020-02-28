@@ -11,11 +11,6 @@
 <script>
 export default {
   name: "PostDetails",
-  methods: {
-    deletePost() {
-      this.$store.dispatch("deletePost", this.details._id);
-    }
-  },
   mounted() {
     if (!this.$store.state.posts.length) {
       this.$store.dispatch("getPostById", this.$route.params.postId);
@@ -27,9 +22,9 @@ export default {
     }
   },
   computed: {
-    // details() {
-    //   return this.$store.state.activePost;
-    // }
+    details() {
+      return this.$store.state.activePost;
+    }
   }
 };
 </script>

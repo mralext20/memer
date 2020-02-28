@@ -24,13 +24,6 @@
         >
           <router-link class="nav-link" :to="{ name: 'Profile' }">Profile</router-link>
         </li>
-        <li
-          class="nav-item"
-          v-if="$auth.isAuthenticated"
-          :class="{ active: $route.name == 'CreatePost' }"
-        >
-          <router-link class="nav-link" :to="{ name: 'CreatePost' }">Create Post</router-link>
-        </li>
       </ul>
       <span class="navbar-text">
         <button class="btn btn-success" @click="login" v-if="!$auth.isAuthenticated">Login</button>

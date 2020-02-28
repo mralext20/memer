@@ -48,10 +48,10 @@ export default new Vuex.Store({
     },
     async getPosts({ commit, dispatch }) {
       try {
-        let res = await api.get("");
-        commit("setPosts", res.data.data);
+        let res = await api.get("/memes");
+        commit("setPosts", res.data);
       } catch (error) {
-
+        console.error(error)
       }
     },
     async deletePost({ commit, dispatch }, postId) {
