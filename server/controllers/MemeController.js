@@ -2,7 +2,7 @@ import express from "express";
 import BaseController from "../utils/BaseController";
 import MemeService from "../services/MemesService";
 import auth0Provider from "@bcwdev/auth0provider";
-import CommentService from "../controllers/CommentService"
+import CommentService from "../services/CommentsService"
 
 
 
@@ -38,7 +38,7 @@ export class MemeController extends BaseController {
   }
   async getMemeById(req, res, next) {
     try {
-      let data = await CommentService.getMemeById(req.params.id);
+      let data = await CommentService.findCommentsByMemeId(req.params.id);
       res.send(data);
     } catch (error) {
       next(error);
