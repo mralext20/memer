@@ -49,7 +49,7 @@ export class CommentController extends BaseController {
 
   async edit(req, res, next) {
     try {
-      let data = await CommentService.update(req.params.id, req.body);
+      let data = await CommentService.update(req.params.id, req.body, req.userInfo.email);
       res.send(data);
     } catch (error) {
       next(error);
@@ -57,7 +57,7 @@ export class CommentController extends BaseController {
   }
   async delete(req, res, next) {
     try {
-      await CommentService.deleteCommentById(req.params.id);
+      await CommentService.deleteCommentById(req.params.id, req.userInfo.email);
       res.send("Deleted");
     } catch (error) {
       next(error);
