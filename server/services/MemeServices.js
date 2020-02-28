@@ -19,4 +19,4 @@ class MemeService {
   }
 }
 
-export const memeService = new MemeService();
+export default new MemeService();
