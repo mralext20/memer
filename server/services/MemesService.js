@@ -1,6 +1,5 @@
 import { dbContext } from "../db/DbContext";
 import { BadRequest, UnAuthorized } from "../utils/Errors";
-import Meme from "../models/Meme"
 
 class MemeService {
   async getAll(query = {}) {
