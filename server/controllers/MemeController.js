@@ -13,6 +13,7 @@ export class MemeController extends BaseController {
       .get("", this.getAll)
       // NOTE: Beyond this point all routes require Authorization tokens (the user must be logged in)
       .get("/:id", this.getById)
+      .get("/:id", this.getMemeById)
       .use(auth0Provider.getAuthorizedUserInfo)
       .post("", this.create)
       .put("/:id", this.edit)
@@ -28,12 +29,21 @@ export class MemeController extends BaseController {
   }
   async getById(req, res, next) {
     try {
-      let data = - await MemeService.findById(req.params.id);
+      let data = await MemeService.getById(req.params.id);
       res.send(data);
     } catch (error) {
       next(error);
     }
   }
+  async getMemeById(req, res, next) {
+    try {
+      let data = await CommentService.getMemeById(req.params.id);
+      res.send(data);
+    } catch (error) {
+      next(error);
+    }
+  }
+
   async create(req, res, next) {
     try {
       // NOTE NEVER TRUST THE CLIENT TO ADD THE CREATOR ID
@@ -44,3 +54,6 @@ export class MemeController extends BaseController {
     }
   }
 }
+
+
+
