@@ -5,6 +5,8 @@ import Home from "../views/Home.vue";
 // @ts-ignore
 import Profile from "../views/Profile.vue";
 import { authGuard } from "@bcwdev/auth0-vue";
+// @ts-ignore
+import PostDetails from "../views/PostDetails"
 
 Vue.use(VueRouter);
 
@@ -18,6 +20,12 @@ const routes = [
     path: "/profile",
     name: "Profile",
     component: Profile,
+    beforeEnter: authGuard
+  },
+  {
+    path: "/postDetails",
+    name: "PostDetails",
+    component: PostDetails,
     beforeEnter: authGuard
   },
 ];
