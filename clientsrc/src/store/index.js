@@ -61,9 +61,9 @@ export default new Vuex.Store({
         console.error(error)
       }
     },
-    async getPostById({ commit, dispatch }, post) {
+    async getPostById({ commit, dispatch }, postId) {
       try {
-        let res = await api.get(`/memes/${post.id}`)
+        let res = await api.get(`/memes/${postId}`)
         commit("setActivePost", res.data)
       } catch (error) {
         console.error(error);
@@ -72,6 +72,7 @@ export default new Vuex.Store({
     },
     async setActivePost({ commit, dispatch }, post) {
       try {
+        debugger
         let res = await api.get(`/memes/${post.id}`);
         commit("setActivePost", post)
       }

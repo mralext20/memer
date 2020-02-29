@@ -14,13 +14,18 @@ export default {
   name: "PostDetails",
   mounted() {
     if (!this.$store.state.posts.length) {
-      this.$store.dispatch("getPostById", this.$route.params.id);
+      this.$store.dispatch("getPostById", this.$route.params.postId);
     } else {
       this.$store.dispatch(
         "setActivePost",
         this.$store.state.posts.find(p => p._id == this.$route.params.postId)
       );
     }
+
+    // this.$store.dispatch(
+    //   "setActivePost",
+    //   this.$store.state.posts.find(p => p._id == this.$route.params.postId)
+    // );
   },
   methods: {
     deletePost() {
