@@ -1,9 +1,12 @@
 <template>
   <div class style="width: 100vw;">
+
     <h5 class="card-title text-white">{{details.title}}</h5>
-    <img :src="details.memeUrl" class="card-img-top" alt="..." />
+
+    <img :src="details.memeUrl" class="card-img-top" />
+
     <div class="card-body">
-      <button class="btn btn-danger">Delete</button>
+      <button @click="deletePost" class="btn btn-danger">Delete</button>
       <button class="btn btn-warning">Edit</button>
     </div>
     <i @click="toggleShow" class="far fa-plus-square"></i>
@@ -31,6 +34,11 @@ export default {
     return {
       show: false
     };
+  },
+  methods: {
+    deletePost() {
+      this.$store.dispatch("deletePost", this.details.id);
+    }
   },
   computed: {
     details() {
