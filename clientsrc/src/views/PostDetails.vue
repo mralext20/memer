@@ -1,6 +1,6 @@
 <template>
   <div class style="width: 100vw;">
-    <h5 class="card-title">{{details.title}}</h5>
+    <h5 class="card-title text-white">{{details.title}}</h5>
     <img :src="details.memeUrl" class="card-img-top" alt="..." />
     <div class="card-body">
       <button class="btn btn-danger">Delete</button>
