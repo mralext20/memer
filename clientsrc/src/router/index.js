@@ -5,6 +5,8 @@ import Home from "../views/Home.vue";
 // @ts-ignore
 import Profile from "../views/Profile.vue";
 import { authGuard } from "@bcwdev/auth0-vue";
+// @ts-ignore
+import PostDetails from "../views/PostDetails"
 
 Vue.use(VueRouter);
 
@@ -19,6 +21,11 @@ const routes = [
     name: "Profile",
     component: Profile,
     beforeEnter: authGuard
+  },
+  {
+    path: "memes/:postId",
+    name: "PostDetails",
+    component: PostDetails,
   },
 ];
 

@@ -1,7 +1,9 @@
 <template>
   <div class="card col-12 col-md-3" style="width: 18rem;">
     <h5 class="card-title">{{postData.title}}</h5>
-    <img :src="postData.memeUrl" class="card-img-top" alt="..." />
+    <router-link :to="{ name: 'PostDetails', params: {postId: postData._id}}">
+      <img :src="postData.memeUrl" class="card-img-top" alt="..." />
+    </router-link>
     <div class="card-body">
       <button class="btn btn-danger">Delete</button>
       <button class="btn btn-warning">Edit</button>
@@ -13,7 +15,11 @@
 export default {
   name: "Post",
   props: ["postData"],
-  methods: {}
+  methods: {
+    setActivePost() {
+      this.$store.dispatch("setActivePost", this.postData);
+    }
+  }
 };
 </script>
 
