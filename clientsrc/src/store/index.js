@@ -33,6 +33,9 @@ export default new Vuex.Store({
     },
     addPost(state, data) {
       state.posts.push(data)
+    },
+    deletePost(state, id) {
+      state.posts.splice(id, 1)
     }
   },
   actions: {
@@ -82,6 +85,16 @@ export default new Vuex.Store({
         commit("addPost", res.data)
       } catch (error) {
         console.error(error)
+      }
+    },
+    async deletePost({ commit }, id) {
+      try {
+        let res = await api.delete(`/memes/${id}`)
+        this.dispatch("getPosts")
+        this.dispatch("setActivePost", {})
+      } catch (error) {
+        console.error(error);
+
       }
     }
   }
