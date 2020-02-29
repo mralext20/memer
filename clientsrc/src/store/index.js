@@ -3,6 +3,7 @@ import Vuex from "vuex";
 import Axios from "axios";
 import router from "../router";
 
+
 Vue.use(Vuex);
 
 let baseUrl = location.host.includes("localhost")
