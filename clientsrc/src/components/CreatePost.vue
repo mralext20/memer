@@ -2,14 +2,20 @@
   <div class="col-5">
     <form @submit.prevent="createPost">
       <div class="form-group">
-        <input type="text" class="form-control" id="imgUrl" v-model="meme.memeUrl" />
+        <input type="text" class="form-control" id="title" v-model="meme.title" placeholder="Title" />
       </div>
       <div class="form-group">
-        <input type="text" class="form-control" id="title" v-model="meme.title" />
+        <input
+          type="text"
+          class="form-control"
+          id="imgUrl"
+          v-model="meme.memeUrl"
+          placeholder="image Link"
+        />
       </div>
       <div class="form-check"></div>
       <button type="submit" class="btn btn-primary">Submit</button>
-      <button @click="toggleForm">Cancel</button>
+      <button class="btn mx-2 btn-danger" @click="toggleForm">Cancel</button>
     </form>
   </div>
 </template>
