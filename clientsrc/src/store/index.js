@@ -33,6 +33,10 @@ export default new Vuex.Store({
     },
     addPost(state, data) {
       state.posts.push(data)
+    },
+    deleteComment(state, data) {
+      let meme = state.posts.find(i => i.id == data.memeId);
+      meme.comments = meme.comments.filter(i => i.id != data.id);
     }
   },
   actions: {
@@ -80,6 +84,14 @@ export default new Vuex.Store({
       try {
         let res = await api.post("memes", data);
         commit("addPost", res.data)
+      } catch (error) {
+        console.error(error)
+      }
+    },
+    async deleteComment({ commit }, data) {
+      try {
+        await api.delete(`/comments/${data.id}`)
+        commit("deleteComment", data)
       } catch (error) {
         console.error(error)
       }
