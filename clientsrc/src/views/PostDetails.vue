@@ -1,6 +1,5 @@
 <template>
   <div class style="width: 100vw;">
-
     <h5 class="card-title text-white">{{details.title}}</h5>
 
     <img :src="details.memeUrl" class="card-img-top" />
@@ -15,9 +14,11 @@
       <button @click="deletePost" class="btn btn-danger">Delete</button>
       <button @click="toggleEdit" class="btn btn-warning">Edit</button>
     </div>
-    <i @click="toggleShow" class="far fa-plus-square"></i>
-    <create-comment :show="show" v-if="show" :memeId="details.id" />
-    <comment v-for="comment in details.comments" :key="comment.id" :data="comment" />
+    <div class="card-body">
+      <i @click="toggleShow" class="far fa-plus-square"></i>
+      <create-comment :show="show" v-if="show" :memeId="details.id" />
+      <comment v-for="comment in details.comments" :key="comment.id" :data="comment" />
+    </div>
   </div>
 </template>
 
