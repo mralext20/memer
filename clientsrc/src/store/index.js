@@ -3,6 +3,7 @@ import Vuex from "vuex";
 import Axios from "axios";
 import router from "../router";
 
+
 Vue.use(Vuex);
 
 let baseUrl = location.host.includes("localhost")
@@ -35,6 +36,10 @@ export default new Vuex.Store({
     addPost(state, data) {
       state.posts.push(data)
     },
+    editPost(state, data) {
+      let post = state.posts.find(p => p._id == data.id);
+      post.title = data.title;
+
     deleteComment(state, data) {
       let meme = state.posts.find(i => i.id == data.memeId);
       meme.comments = meme.comments.filter(i => i.id != data.id);
@@ -92,6 +97,16 @@ export default new Vuex.Store({
         console.error(error)
       }
     },
+    async editPost({ commit }, data) {
+      try {
+
+        let res = await api.put(`/memes/${data.id}`, data)
+        commit("editPost", res.data)
+      } catch (error) {
+        console.error(error);
+      }
+    },
+
     async deleteComment({ commit }, data) {
       try {
         await api.delete(`/comments/${data.id}`)
