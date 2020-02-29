@@ -34,6 +34,10 @@ export default new Vuex.Store({
     addPost(state, data) {
       state.posts.push(data)
     },
+    editPost(state, data) {
+      let post = state.posts.find(p => p._id == data.id);
+      post.title = data.title;
+    },
     deletePost(state, id) {
       state.posts.splice(id, 1)
     }
@@ -85,6 +89,15 @@ export default new Vuex.Store({
         commit("addPost", res.data)
       } catch (error) {
         console.error(error)
+      }
+    },
+    async editPost({ commit }, data) {
+      try {
+
+        let res = await api.put(`/memes/${data.id}`, data)
+        commit("editPost", res.data)
+      } catch (error) {
+        console.error(error);
       }
     },
     async deletePost({ commit }, id) {
