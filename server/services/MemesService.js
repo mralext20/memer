@@ -12,7 +12,7 @@ class MemeService {
   }
   async getById(id) {
     let value = await dbContext.Memes.findById(id).populate("comments")
-      .populate({ path: "comments", populate: { path: "creator", select: "" } });
+      .populate({ path: "comments", populate: { path: "creator", select: "name" } });
     if (!value) {
       throw new BadRequest("Invalid Id");
     }

@@ -6,7 +6,7 @@
           type="text"
           class="form-control"
           id="comment"
-          v-model="comment.title"
+          v-model="comment.comment"
           placeholder="Write a comment..."
         />
       </div>
@@ -20,16 +20,19 @@
 <script>
 export default {
   name: "CreateComment",
-  props: ["show"],
+  props: ["show", "memeId"],
   data() {
     return {
-      comment: {}
+      comment: {
+        title: "",
+        memeId: this.memeId
+      }
     };
   },
   methods: {
     createPost() {
       this.$store.dispatch("addComment", this.comment);
-      this.comment = {};
+      this.comment = { comment: "", memeId: this.memeId };
     },
     toggleForm() {
       this.show = !this.show;

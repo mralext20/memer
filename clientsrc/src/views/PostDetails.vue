@@ -7,7 +7,7 @@
       <button class="btn btn-warning">Edit</button>
     </div>
     <i @click="toggleShow" class="far fa-plus-square"></i>
-    <create-comment :show="show" v-if="show" />
+    <create-comment :show="show" v-if="show" :memeId="details.id" />
     <comment v-for="comment in details.comments" :key="comment.id" :data="comment" />
   </div>
 </template>
@@ -48,10 +48,6 @@ export default {
   }
 };
 </script>
-
-
-
-
 
 
 <style>

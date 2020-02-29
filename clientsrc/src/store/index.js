@@ -25,6 +25,7 @@ export default new Vuex.Store({
     setProfile(state, profile) {
       state.profile = profile;
     },
+
     setPosts(state, posts) {
       state.posts = posts;
     },
@@ -95,6 +96,11 @@ export default new Vuex.Store({
       } catch (error) {
         console.error(error)
       }
+    },
+    async addComment({ commit, dispatch }, data) {
+      await api.post("/comments", data)
+      dispatch("getPostById", { id: data.memeId })
+
     }
   }
 });
