@@ -26,6 +26,7 @@ export default new Vuex.Store({
     setProfile(state, profile) {
       state.profile = profile;
     },
+
     setPosts(state, posts) {
       state.posts = posts;
     },
@@ -38,6 +39,10 @@ export default new Vuex.Store({
     editPost(state, data) {
       let post = state.posts.find(p => p._id == data.id);
       post.title = data.title;
+
+    deleteComment(state, data) {
+      let meme = state.posts.find(i => i.id == data.memeId);
+      meme.comments = meme.comments.filter(i => i.id != data.id);
     },
     deletePost(state, id) {
       state.posts.splice(id, 1)
@@ -101,6 +106,20 @@ export default new Vuex.Store({
         console.error(error);
       }
     },
+
+    async deleteComment({ commit }, data) {
+      try {
+        await api.delete(`/comments/${data.id}`)
+        commit("deleteComment", data)
+      } catch (error) {
+        console.error(error)
+      }
+    },
+    async addComment({ commit, dispatch }, data) {
+      await api.post("/comments", data)
+      dispatch("getPostById", { id: data.memeId })
+    },
+
     async deletePost({ commit }, id) {
       try {
         let res = await api.delete(`/memes/${id}`)
