@@ -6,12 +6,15 @@
       <button class="btn btn-danger">Delete</button>
       <button class="btn btn-warning">Edit</button>
     </div>
+    <i @click="toggleShow" class="far fa-plus-square"></i>
+    <create-comment :show="show" v-if="show" />
     <comment v-for="comment in details.comments" :key="comment.id" :data="comment" />
   </div>
 </template>
 
 <script>
 import Comment from "../components/Comment";
+import createComment from "../components/createComment";
 export default {
   name: "PostDetails",
   mounted() {
@@ -24,13 +27,24 @@ export default {
       );
     }
   },
+  data() {
+    return {
+      show: false
+    };
+  },
   computed: {
     details() {
       return this.$store.state.activePost;
     }
   },
   components: {
-    Comment
+    Comment,
+    createComment
+  },
+  methods: {
+    toggleShow() {
+      this.show = !this.show;
+    }
   }
 };
 </script>
