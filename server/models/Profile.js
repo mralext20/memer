@@ -12,4 +12,10 @@ const Profile = new Schema(
   { timestamps: true, toJSON: { virtuals: true } }
 );
 
+Profile.virtual("posts", {
+  localField: "email",
+  ref: "Memes",
+  foreignField: "creatorEmail"
+})
+
 export default Profile;

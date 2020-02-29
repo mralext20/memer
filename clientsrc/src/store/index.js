@@ -30,6 +30,9 @@ export default new Vuex.Store({
     },
     setActivePost(state, post) {
       state.activePost = post
+    },
+    addPost(state, data) {
+      state.posts.push(data)
     }
   },
   actions: {
@@ -67,7 +70,16 @@ export default new Vuex.Store({
     async setActivePost({ commit, dispatch }, post) {
       try {
         let res = await api.get(`/memes/${post.id}`);
-        commit("setActivePost", post);
+        commit("setActivePost", post)
+      }
+      catch (error) {
+        console.error();
+      };
+    },
+    async addMeme({ commit }, data) {
+      try {
+        let res = await api.post("memes", data);
+        commit("addPost", res.data)
       } catch (error) {
         console.error(error)
       }
