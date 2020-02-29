@@ -18,7 +18,8 @@ let api = Axios.create({
 export default new Vuex.Store({
   state: {
     profile: {},
-    posts: []
+    posts: [],
+    activePost: {}
   },
   mutations: {
     setProfile(state, profile) {
@@ -26,6 +27,9 @@ export default new Vuex.Store({
     },
     setPosts(state, posts) {
       state.posts = posts;
+    },
+    setActivePost(state, post) {
+      state.activePost = post
     }
   },
   actions: {
@@ -47,6 +51,23 @@ export default new Vuex.Store({
       try {
         let res = await api.get("/memes");
         commit("setPosts", res.data);
+      } catch (error) {
+        console.error(error)
+      }
+    },
+    async getPostById({ commit, dispatch }, post) {
+      try {
+        let res = await api.get(`/memes/${post.id}`)
+        commit("setActivePost", res.data)
+      } catch (error) {
+        console.error(error);
+
+      }
+    },
+    async setActivePost({ commit, dispatch }, post) {
+      try {
+        let res = await api.get(`/memes/${post.id}`);
+        commit("setActivePost", post);
       } catch (error) {
         console.error(error)
       }
