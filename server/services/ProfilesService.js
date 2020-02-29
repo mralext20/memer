@@ -64,7 +64,9 @@ class ProfileService {
   async getProfile(user) {
     let profile = await dbContext.Profile.findOne({
       email: user.email
-    }).populate("posts").populate({ path: 'posts', populate: { path: "comments" } });
+    }).populate("posts")
+      .populate({ path: 'posts', populate: { path: "comments" } })
+      .populate({ path: "posts.comments", populate: { path: "creator" } });
     profile = await createProfileIfNeeded(profile, user);
     await mergeSubsIfNeeded(profile, user);
     return profile;

@@ -1,15 +1,17 @@
 <template>
-  <div class="card col-12 col-md-3" style="width: 18rem;">
+  <div class style="width: 100vw;">
     <h5 class="card-title">{{details.title}}</h5>
     <img :src="details.memeUrl" class="card-img-top" alt="..." />
     <div class="card-body">
       <button class="btn btn-danger">Delete</button>
       <button class="btn btn-warning">Edit</button>
     </div>
+    <comment v-for="comment in details.comments" :key="comment.id" :data="comment" />
   </div>
 </template>
 
 <script>
+import Comment from "../components/Comment";
 export default {
   name: "PostDetails",
   mounted() {
@@ -26,6 +28,9 @@ export default {
     details() {
       return this.$store.state.activePost;
     }
+  },
+  components: {
+    Comment
   }
 };
 </script>
