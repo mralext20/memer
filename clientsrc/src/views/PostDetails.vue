@@ -21,7 +21,6 @@ export default {
         this.$store.state.posts.find(p => p._id == this.$route.params.postId)
       );
     }
-    // console.log(this.$store.state.activePost);
   },
   computed: {
     details() {
