@@ -18,7 +18,8 @@ let api = Axios.create({
 export default new Vuex.Store({
   state: {
     profile: {},
-    posts: []
+    posts: [],
+    votes: {}
   },
   mutations: {
     setProfile(state, profile) {
@@ -57,7 +58,8 @@ export default new Vuex.Store({
     },
     async upvoteScore({ commit }, id) {
       try {
-        let res = await api.put("/memes", id);
+        let post = state.posts.find(p => p.id == id);
+        let res = await api.put("/memes", id, post);
         commit("upvoteScore", id);
       }
       catch (error) {

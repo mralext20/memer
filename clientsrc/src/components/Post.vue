@@ -4,27 +4,19 @@
       <u>{{postData.title}}</u>
     </h5>
     <img :src="postData.memeUrl" class="card-img-top" alt="..." />
-    <div class="card-body">
-      <i @click="upVote" class="fas fa-sort-up"></i>
-      <br />
-      <i @click="downVote" class="fas fa-sort-down"></i>
-      <br />
-      <p style="color:white; float:left;">Score:{{postData.ratingX}}</p>
-    </div>
+    <div class="card-body"></div>
+    <votes :postData="postData" />
   </div>
 </template>
 
 <script>
+import Votes from "./Votes";
 export default {
   name: "Post",
   props: ["postData"],
-  methods: {
-    upVote() {
-      debugger;
-      let upvote = this.postData.ratingX + 1;
-      this.$store.dispatch("editScore", id, upvote);
-      return upvote;
-    }
+  methods: {},
+  components: {
+    Votes
   }
 };
 </script>
