@@ -20,7 +20,7 @@ export default {
   methods: {
     upVote() {
       let upvote = this.postData.ratingX + 1;
-      this.$store.dispatch("editScore", id);
+      this.$store.dispatch("upvoteScore", this.postData.id);
       return upvote;
     }
   },

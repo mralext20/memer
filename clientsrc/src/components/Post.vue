@@ -6,7 +6,6 @@
     <router-link :to="{ name: 'PostDetails', params: {postId: postData._id}}">
       <img :src="postData.memeUrl" class="card-img-top" alt="..." />
     </router-link>
-    <div class="card-body"></div>
     <votes :postData="postData" />
   </div>
 </template>
