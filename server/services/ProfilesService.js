@@ -64,11 +64,14 @@ class ProfileService {
   async getProfile(user) {
     let profile = await dbContext.Profile.findOne({
       email: user.email
-    });
+    }).populate("posts")
+      .populate({ path: 'posts', populate: { path: "comments" } })
+      .populate({ path: "posts.comments", populate: { path: "creator" } });
     profile = await createProfileIfNeeded(profile, user);
     await mergeSubsIfNeeded(profile, user);
     return profile;
-  }
+  };
+
   /**
 ​    * Updates profile with the request body, will only allow changes to editable fields
 ​    * @param {any} user Auth0 user object

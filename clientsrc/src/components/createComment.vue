@@ -1,16 +1,13 @@
 <template>
-  <div class="col-5">
+  <div class="col-5" v-if="show">
     <form @submit.prevent="createPost">
-      <div class="form-group">
-        <input type="text" class="form-control" id="title" v-model="meme.title" placeholder="Title" />
-      </div>
       <div class="form-group">
         <input
           type="text"
           class="form-control"
-          id="imgUrl"
-          v-model="meme.memeUrl"
-          placeholder="image Link"
+          id="comment"
+          v-model="comment.comment"
+          placeholder="Write a comment..."
         />
       </div>
       <div class="form-check"></div>
@@ -22,17 +19,23 @@
 
 <script>
 export default {
-  name: "CreatePost",
-  props: ["toggleForm"],
+  name: "CreateComment",
+  props: ["show", "memeId"],
   data() {
     return {
-      meme: {}
+      comment: {
+        title: "",
+        memeId: this.memeId
+      }
     };
   },
   methods: {
     createPost() {
-      this.$store.dispatch("addMeme", this.meme);
-      this.meme = {};
+      this.$store.dispatch("addComment", this.comment);
+      this.comment = { comment: "", memeId: this.memeId };
+    },
+    toggleForm() {
+      this.show = !this.show;
     }
   }
 };

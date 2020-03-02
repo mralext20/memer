@@ -10,7 +10,6 @@ import Post from "./Post";
 export default {
   name: "Posts",
   mounted() {
-    console.log("helo");
     this.$store.dispatch("getPosts");
   },
   computed: {
