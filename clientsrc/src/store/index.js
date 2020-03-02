@@ -79,7 +79,7 @@ export default new Vuex.Store({
     async upvoteScore({ commit, state }, id) {
       try {
         let post = state.posts.find(p => p.id == id);
-        let res = await api.put("/memes", id, post);
+        let res = await api.put(`/memes/${id}`, post);
         commit("upvoteScore", id);
       }
       catch (error) {
