@@ -3,7 +3,9 @@
     <h5 class="card-title" style="color: white;">
       <u>{{postData.title}}</u>
     </h5>
-    <img :src="postData.memeUrl" class="card-img-top" alt="..." />
+    <router-link :to="{ name: 'PostDetails', params: {postId: postData._id}}">
+      <img :src="postData.memeUrl" class="card-img-top" alt="..." />
+    </router-link>
     <div class="card-body"></div>
     <votes :postData="postData" />
   </div>
