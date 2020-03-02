@@ -20,6 +20,7 @@ export default new Vuex.Store({
   state: {
     profile: {},
     posts: [],
+    votes: {},
     activePost: {}
   },
   mutations: {
@@ -29,6 +30,10 @@ export default new Vuex.Store({
 
     setPosts(state, posts) {
       state.posts = posts;
+    },
+    upvoteScore(state, id) {
+      let post = state.posts.find(p => p.id == id);
+      post.ratingX++;
     },
     setActivePost(state, post) {
       state.activePost = post
@@ -69,6 +74,16 @@ export default new Vuex.Store({
         commit("setPosts", res.data);
       } catch (error) {
         console.error(error)
+      }
+    },
+    async upvoteScore({ commit, state }, id) {
+      try {
+        let post = state.posts.find(p => p.id == id);
+        let res = await api.put("/memes", id, post);
+        commit("upvoteScore", id);
+      }
+      catch (error) {
+        console.error(error);
       }
     },
     async getPostById({ commit, dispatch }, postId) {
@@ -131,4 +146,4 @@ export default new Vuex.Store({
       }
     }
   }
-});
+})

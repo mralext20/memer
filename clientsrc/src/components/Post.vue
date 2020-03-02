@@ -9,10 +9,14 @@
 </template>
 
 <script>
+import Votes from "./Votes";
 export default {
   name: "Post",
   props: ["postData"],
-  methods: {}
+  methods: {},
+  components: {
+    Votes
+  }
 };
 </script>
 

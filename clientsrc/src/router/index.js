@@ -3,6 +3,8 @@ import VueRouter from "vue-router";
 // @ts-ignore
 import Home from "../views/Home.vue";
 // @ts-ignore
+import Votes from "../components/Votes"
+// @ts-ignore
 import Profile from "../views/Profile.vue";
 import { authGuard } from "@bcwdev/auth0-vue";
 // @ts-ignore
