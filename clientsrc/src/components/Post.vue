@@ -12,11 +12,7 @@
 export default {
   name: "Post",
   props: ["postData"],
-  methods: {
-    setActivePost() {
-      this.$store.dispatch("setActivePost", this.postData);
-    }
-  }
+  methods: {}
 };
 </script>
 

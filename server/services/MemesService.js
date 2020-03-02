@@ -6,11 +6,13 @@ class MemeService {
     let values = await dbContext.Memes.find(query).populate(
       "creator",
       "name picture"
-    );
+    ).populate("comments")
+      .populate({ path: "comments", populate: { path: "creator", select: "name" } });
     return values;
   }
   async getById(id) {
-    let value = await dbContext.Memes.findById(id);
+    let value = await dbContext.Memes.findById(id).populate("comments")
+      .populate({ path: "comments", populate: { path: "creator", select: "name" } });
     if (!value) {
       throw new BadRequest("Invalid Id");
     }
@@ -20,7 +22,7 @@ class MemeService {
     return await dbContext.Memes.create(body)
   }
   async update(id, update, email) {
-    let meme = await dbContext.Memes.findById(id);
+    let meme = await dbContext.Memes.findById(id).populate("comments");
     if (meme.creatorEmail != email) {
       throw new UnAuthorized()
     }

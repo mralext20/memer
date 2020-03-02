@@ -18,8 +18,8 @@ class CommentsService {
   }
 
   async create(body) {
-
-    return await dbContext.Comments.create(body);
+    let comment = await dbContext.Comments.create(body)
+    return this.findById(comment.id)
   }
 
   async update(id, update, email) {
