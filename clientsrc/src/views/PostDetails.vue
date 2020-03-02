@@ -21,11 +21,6 @@ export default {
         this.$store.state.posts.find(p => p._id == this.$route.params.postId)
       );
     }
-
-    // this.$store.dispatch(
-    //   "setActivePost",
-    //   this.$store.state.posts.find(p => p._id == this.$route.params.postId)
-    // );
   },
   methods: {
     deletePost() {
