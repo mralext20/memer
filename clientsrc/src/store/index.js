@@ -39,7 +39,7 @@ export default new Vuex.Store({
     editPost(state, data) {
       let post = state.posts.find(p => p._id == data.id);
       post.title = data.title;
-
+    },
     deleteComment(state, data) {
       let meme = state.posts.find(i => i.id == data.memeId);
       meme.comments = meme.comments.filter(i => i.id != data.id);
