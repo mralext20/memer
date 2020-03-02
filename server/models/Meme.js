@@ -19,4 +19,10 @@ Meme.virtual("creator", {
   justOne: true
 });
 
+Meme.virtual("comments", {
+  localField: "_id",
+  ref: "Comments",
+  foreignField: "memeId"
+})
+
 export default Meme;

@@ -4,10 +4,7 @@
     <router-link :to="{ name: 'PostDetails', params: {postId: postData._id}}">
       <img :src="postData.memeUrl" class="card-img-top" alt="..." />
     </router-link>
-    <div class="card-body">
-      <button class="btn btn-danger">Delete</button>
-      <button class="btn btn-warning">Edit</button>
-    </div>
+    <div class="card-body"></div>
   </div>
 </template>
 
