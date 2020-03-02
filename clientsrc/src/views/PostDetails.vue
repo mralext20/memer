@@ -1,6 +1,5 @@
 <template>
   <div class style="width: 100vw;">
-
     <h5 class="card-title text-white">{{details.title}}</h5>
 
     <img :src="details.memeUrl" class="card-img-top" />
@@ -40,11 +39,7 @@ export default {
   data() {
     return {
       editToggle: false,
-      post: {}
-    };
-  },
-  data() {
-    return {
+      post: {},
       show: false
     };
   },
@@ -67,6 +62,20 @@ export default {
   methods: {
     deletePost() {
       this.$store.dispatch("deletePost", this.details.id);
+    },
+    editPost() {
+      if (this.currentUser == this.details.creatorEmail) {
+        console.log(this.post);
+        let newObj = this.details;
+        newObj.title = this.post.title;
+        this.$store.dispatch("editPost", newObj);
+      }
+    },
+    toggleEdit() {
+      this.editToggle = !this.editToggle;
+    },
+    toggleShow() {
+      this.show = !this.show;
     }
   },
   computed: {
@@ -81,11 +90,6 @@ export default {
     Comment,
     createComment
   },
-  methods: {
-    toggleShow() {
-      this.show = !this.show;
-    }
-  }
 };
 </script>
 
