@@ -72,7 +72,6 @@ export default new Vuex.Store({
     },
     async setActivePost({ commit, dispatch }, post) {
       try {
-        debugger
         let res = await api.get(`/memes/${post.id}`);
         commit("setActivePost", post)
       }
