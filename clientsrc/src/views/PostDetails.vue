@@ -64,6 +64,11 @@ export default {
       this.editToggle = !this.editToggle;
     }
   },
+  methods: {
+    deletePost() {
+      this.$store.dispatch("deletePost", this.details.id);
+    }
+  },
   computed: {
     details() {
       return this.$store.state.activePost;
