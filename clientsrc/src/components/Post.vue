@@ -1,10 +1,11 @@
 <template>
-  <div class="card col-12 col-md-3" style="width: 18rem;">
-    <h5 class="card-title">{{postData.title}}</h5>
-    <router-link :to="{ name: 'PostDetails', params: {postId: postData._id}}">
-      <img :src="postData.memeUrl" class="card-img-top" alt="..." />
-    </router-link>
+  <div class="card col-12 col-md-3" style="width: 18rem; background-color:black;">
+    <h5 class="card-title" style="color: white;">
+      <u>{{postData.title}}</u>
+    </h5>
+    <img :src="postData.memeUrl" class="card-img-top" alt="..." />
     <div class="card-body"></div>
+    <votes :postData="postData" />
   </div>
 </template>
 
