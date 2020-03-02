@@ -28,7 +28,7 @@ export default {
   name: "PostDetails",
   mounted() {
     if (!this.$store.state.posts.length) {
-      this.$store.dispatch("getPostById", this.$route.params.id);
+      this.$store.dispatch("getPostById", this.$route.params.postId);
     } else {
       this.$store.dispatch(
         "setActivePost",
